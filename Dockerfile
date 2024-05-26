@@ -3,7 +3,8 @@
 FROM node:lts-alpine AS builder
 WORKDIR /src
 COPY package*.json ./
-RUN npm install
+RUN npm update
+RUN npm install --ignore-script 
 COPY . .
 RUN npm run build
 
