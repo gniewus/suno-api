@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import { cookies } from 'next/headers'
+import { cookies } from 'next/headers';
 import { DEFAULT_MODEL, sunoApi } from "@/lib/SunoApi";
 import { corsHeaders } from "@/lib/utils";
 
@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
   if (req.method === 'POST') {
     try {
       const body = await req.json();
-      const { audio_id, prompt, continue_at, tags, negative_tags, title, model, wait_audio } = body;
+      const { audio_id } = body;
 
       if (!audio_id) {
         return new NextResponse(JSON.stringify({ error: 'Audio ID is required' }), {
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
       }
 
       const audioInfo = await (await sunoApi((await cookies()).toString()))
-        .extendAudio(audio_id, prompt, continue_at, tags || '', negative_tags || '', title, model || DEFAULT_MODEL, wait_audio || false);
+        .generateStems(audio_id);
 
       return new NextResponse(JSON.stringify(audioInfo), {
         status: 200,
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
         }
       });
     } catch (error: any) {
-      console.error('Error extend audio:', JSON.stringify(error.response.data));
+      console.error('Error generating stems:', JSON.stringify(error.response.data));
       if (error.response.status === 402) {
         return new NextResponse(JSON.stringify({ error: error.response.data.detail }), {
           status: 402,

@@ -8,11 +8,23 @@ export const dynamic = "force-dynamic";
 export async function GET(req: NextRequest) {
   if (req.method === 'GET') {
     try {
+      const url = new URL(req.url);
+      const song_id = url.searchParams.get('song_id');
 
-      const limit = await (await sunoApi((await cookies()).toString())).get_credits();
+      if (!song_id) {
+        return new NextResponse(JSON.stringify({ error: 'Song ID is required' }), {
+          status: 400,
+          headers: {
+            'Content-Type': 'application/json',
+            ...corsHeaders
+          }
+        });
+      }
+
+      const lyricAlignment = await (await sunoApi((await cookies()).toString())).getLyricAlignment(song_id);
 
 
-      return new NextResponse(JSON.stringify(limit), {
+      return new NextResponse(JSON.stringify(lyricAlignment), {
         status: 200,
         headers: {
           'Content-Type': 'application/json',
@@ -20,7 +32,7 @@ export async function GET(req: NextRequest) {
         }
       });
     } catch (error) {
-      console.error('Error fetching limit:', error);
+      console.error('Error fetching lyric alignment:', error);
 
       return new NextResponse(JSON.stringify({ error: 'Internal server error. ' + error }), {
         status: 500,

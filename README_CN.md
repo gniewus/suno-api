@@ -7,15 +7,18 @@
 </div>
 <p align="center">
   <a target="_blank" href="./README.md">English</a> 
-  | <a target="_blank" href="./README_CN.md">简体中文</a> 
-  | <a target="_blank" href="https://suno.gcui.art">Demo</a> 
-  | <a target="_blank" href="https://suno.gcui.art/docs">文档</a> 
-  | <a target="_blank" href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgcui-art%2Fsuno-api&env=SUNO_COOKIE&project-name=suno-api&repository-name=suno-api">一键部署到 Vercel</a> 
+  | <a target="_blank" href="./README_CN.md">简体中文</a>
+  | <a target="_blank" href="./README_RU.md">русский</a> 
+  | <a target="_blank" href="https://suno.gcui.ai">Demo</a> 
+  | <a target="_blank" href="https://suno.gcui.ai/docs">文档</a> 
+  | <a target="_blank" href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgcui-art%2Fsuno-api&env=SUNO_COOKIE,TWOCAPTCHA_KEY,BROWSER,BROWSER_GHOST_CURSOR,BROWSER_LOCALE,BROWSER_HEADLESS&project-name=suno-api&repository-name=suno-api">一键部署到 Vercel</a> 
   
 </p>
 <p align="center">
   <a href="https://www.producthunt.com/products/gcui-art-suno-api-open-source-sunoai-api/reviews?utm_source=badge-product_review&utm_medium=badge&utm_souce=badge-gcui&#0045;art&#0045;suno&#0045;api&#0045;open&#0045;source&#0045;sunoai&#0045;api" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=577408&theme=light" alt="gcui&#0045;art&#0047;suno&#0045;api&#0058;Open&#0045;source&#0032;SunoAI&#0032;API - Use&#0032;API&#0032;to&#0032;call&#0032;the&#0032;music&#0032;generation&#0032;AI&#0032;of&#0032;suno&#0046;ai&#0046; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 </p>
+
+> 🔥 我们新的项目: [ReadPo - 10倍加速你的阅读和写作!](https://readpo.com?utm_source=github&utm_medium=suno-ai)
 
 ![suno-api banner](https://github.com/gcui-art/suno-api/blob/main/public/suno-banner.png)
 
@@ -27,7 +30,7 @@ Suno.ai v3 是一个令人惊叹的 AI 音乐服务，虽然官方还没有开�
 ## Demo
 
 我们部署了一个示例，绑定了一个免费的 suno 账号，所以它每天有使用限制，但你可以看到它运行起来的样子：
-[suno.gcui.art](https://suno.gcui.art)
+[suno.gcui.ai](https://suno.gcui.ai)
 
 ## Features
 
@@ -59,7 +62,7 @@ Suno.ai v3 是一个令人惊叹的 AI 音乐服务，虽然官方还没有开�
 
 #### 部署到 Vercel
 
-[![部署到 Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgcui-art%2Fsuno-api&env=SUNO_COOKIE&project-name=suno-api&repository-name=suno-api)
+[![部署到 Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgcui-art%2Fsuno-api&env=SUNO_COOKIE,TWOCAPTCHA_KEY,BROWSER,BROWSER_GHOST_CURSOR,BROWSER_LOCALE,BROWSER_HEADLESS&project-name=suno-api&repository-name=suno-api)
 
 #### 本地运行
 
@@ -107,7 +110,7 @@ SUNO_COOKIE=<your-cookie>
 
 ### 5. 使用 Suno API
 
-你可以在 [suno.gcui.art](https://suno.gcui.art/docs)查看详细的 API 文档，并在线测试。
+你可以在 [suno.gcui.ai](https://suno.gcui.ai/docs)查看详细的 API 文档，并在线测试。
 
 ## API 说明
 
@@ -121,10 +124,14 @@ Suno API 目前主要实现了以下 API:
 - `/api/get`: 根据id获取音乐信息。获取多个请用","分隔，不传ids则返回所有音乐
 - `/api/get_limit`: 获取配额信息
 - `/api/extend_audio`: 在一首音乐的基础上，扩展音乐长度
+- `/api/generate_stems`: 制作主干轨道（单独的音频和音乐轨道
+- `/api/get_aligned_lyrics`: 获取歌词中每个单词的时间戳列表
+- `/api/clip`: 检索特定音乐的信息
+- `/api/concat`: 合并音乐，将扩展后的音乐和原始音乐合并
 ```
 
 详细文档请查看演示站点:
-[suno.gcui.art/docs](https://suno.gcui.art/docs)
+[suno.gcui.ai/docs](https://suno.gcui.ai/docs)
 
 ## API 集成代码示例
 
@@ -295,6 +302,7 @@ LGPL-3.0 或更高版本
 - 项目仓库: [github.com/gcui-art/suno-api](https://github.com/gcui-art/suno-api)
 - Suno.ai 官网: [suno.ai](https://suno.ai)
 - 演示站点: [suno.gcui.ai](https://suno.gcui.ai)
+- [Readpo](https://readpo.com?utm_source=github&utm_medium=suno-api): ReadPo 是 AI 驱动的读写助手。以闪电般的速度收集信息并筛选，创建引人入胜的内容。
 
 ## 声明
 
